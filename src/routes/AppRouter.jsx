@@ -1,13 +1,20 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Login from '../pages/Login';
-import Dashboard from '../pages/Dashboard';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Login from "../pages/Login";
+import Dashboard from "../pages/Dashboard";
 
 const AppRouter = () => {
-  const isAuthenticated = !!localStorage.getItem('isAdmin'); // נניח שמכניסים ערך ב־login
+  const isAuthenticated = !!localStorage.getItem("isAdmin");
 
   return (
-    <Router>
+    <Router basename="/admin">
+      {" "}
+      {/* הוספת basename */}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route
