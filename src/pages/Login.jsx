@@ -14,7 +14,8 @@ const Login = () => {
     setError("");
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/dashboard");
+      localStorage.setItem("isAdmin", "true"); // שומר התחברות
+      navigate("/admin/dashboard"); // הפניה נכונה
     } catch {
       setError("פרטי ההתחברות שגויים");
     }

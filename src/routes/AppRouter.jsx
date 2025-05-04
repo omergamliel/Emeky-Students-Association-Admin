@@ -9,22 +9,28 @@ import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 
 const AppRouter = () => {
-  const isAuthenticated = !!localStorage.getItem("isAdmin");
-
   return (
     <Router basename="/admin">
-      {" "}
-      {/* הוספת basename */}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route
           path="/dashboard"
-          element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
         />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );
+};
+
+// רכיב שמגן על כל עמוד לפי localStorage
+const ProtectedRoute = ({ children }) => {
+  const isAuthenticated = !!localStorage.getItem("isAdmin");
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
 };
 
 export default AppRouter;
