@@ -16,7 +16,7 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/dashboard");
-    } catch (err) {
+    } catch {
       setError("פרטי ההתחברות שגויים");
     }
   };
