@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import "../../utils/App.css"; // רק אם יש לך עיצוב גלובלי
+import "../utils/App.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
