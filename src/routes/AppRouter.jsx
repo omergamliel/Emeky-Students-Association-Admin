@@ -13,24 +13,11 @@ const AppRouter = () => {
     <Router basename="/admin">
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );
-};
-
-// רכיב שמגן על כל עמוד לפי localStorage
-const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = !!localStorage.getItem("isAdmin");
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
 };
 
 export default AppRouter;
